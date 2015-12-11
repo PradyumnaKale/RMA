@@ -1,0 +1,13 @@
+.done-true {
+	text-decoration: line-through;
+	color: grey;
+}
+body {
+	background: orange;
+}
+table {
+    border-collapse: collapse;
+}
+th{
+	background-color: grey;
+}
