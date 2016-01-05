@@ -1,4 +1,27 @@
-angular.module('studentApp', [])
+angular.module('rmaApp', ['ui.router'])
+.config(function($stateProvider, $urlRouterProvider) {
+    
+    $urlRouterProvider.otherwise('/welcome');
+    
+    $stateProvider
+        
+    	// WELCOME STATE ========================================
+    	.state('welcome', {
+    		url: '/welcome',
+        	templateUrl: 'partials/welcome.html'
+    	})
+        // STUDENT STATE ========================================
+        .state('students', {
+            url: '/students',
+            templateUrl: 'partials/students.html'
+        })
+        // LOGIN STATE ========================================
+        .state('login', {
+            url: '/login',
+            templateUrl: 'partials/login.html'
+        })
+        
+})
 .controller('StudentListController', function($http, $log) {
 	var studentlist = this;
 	studentlist.students = [];
@@ -8,7 +31,7 @@ angular.module('studentApp', [])
 		var student = {
 			firstName : studentlist.firstName,
 			lastName : studentlist.lastName,
-			birthdate : studentlist.birthdate.getDate() + '-' + studentlist.birthdate.getMonth() + '-' + studentlist.birthdate.getFullYear(),
+			birthdate : studentlist.birthdate.getDate() + '-' + (studentlist.birthdate.getMonth() + 1) + '-' + studentlist.birthdate.getFullYear(),
 			marks : studentlist.marks
 		};
 		$http.post('/student', student).success(function (student) {

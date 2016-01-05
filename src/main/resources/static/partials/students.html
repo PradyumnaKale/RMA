@@ -1,0 +1,44 @@
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div ng-controller="StudentListController as studentList">
+					<h2>Students</h2> 
+					<table class="table">
+						<tr>
+							<th>FirstName</th>
+							<th>LastName</th>
+							<th>Date</th>
+							<th>Marks</th>
+							<th>&nbsp;</th>
+						</tr>
+						<tr ng-repeat="student in studentList.students">
+							<td><span class="done-{{student.done}}">{{student.firstName}}</span></td>
+							<td><span class="done-{{student.done}}">{{student.lastName}}</span></td>
+							<td><span class="done-{{student.done}}">{{student.birthdate}}</span></td>
+							<td><span class="done-{{student.done}}">{{student.marks}}</span></td>
+							<td><button class="btn btn-danger" type="button" ng-click="studentList.deleteStudent($index)"><i class="glyphicon glyphicon-remove"></i></button></td>
+						</tr>
+					</table>
+					<h2>Add Student</h2>
+					<form ng-submit="studentList.addStudent()">
+						<table class="table">
+							<tr>
+								<th>FirstName</th>
+								<th>LastName</th>
+								<th>Date</th>
+								<th>Marks</th>
+								<th>&nbsp;</th>
+							</tr>
+							<tr>
+								<td><input type="text" ng-model="studentList.firstName" size="25" placeholder="Enter first name"></td>
+								<td><input type="text" ng-model="studentList.lastName" size="25" placeholder="Enter last name"></td>
+								<td><input type="date" ng-model="studentList.birthdate" size="30" placeholder="Enter Birthdate"></td>
+								<td><input type="number" ng-model="studentList.marks" size="6" placeholder="Enter marks"></td>
+								<td><button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-plus"></i></button></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
