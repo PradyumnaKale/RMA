@@ -12,10 +12,20 @@ public class Student {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	private int rollNo;
 	private String firstName;
+	private String middleName;
 	private String lastName;
 	private String birthdate;
-	private int marks;
+	private int yearOfAdmission;
+
+	public int getRollNo() {
+		return rollNo;
+	}
+
+	public void setRollNo(int rollNo) {
+		this.rollNo = rollNo;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -23,6 +33,14 @@ public class Student {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
 	}
 
 	public String getLastName() {
@@ -41,13 +59,12 @@ public class Student {
 		this.birthdate = birthdate;
 	}
 
-	public int getMarks() {
-		return marks;
+	public int getYearOfAdmission() {
+		return yearOfAdmission;
 	}
 
-	public void setMarks(int marks) {
-		this.marks = marks;
+	public void setYearOfAdmission(int yearOfAdmission) {
+		this.yearOfAdmission = yearOfAdmission;
 	}
-	
-	
+
 }

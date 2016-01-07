@@ -16,7 +16,7 @@
 	<!-- Custom styles for this template -->
 	<link href="css/rma.css" rel="stylesheet">
 </head>
-<body>
+<body class="splash">
 
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
@@ -30,9 +30,12 @@
 				<a class="navbar-brand" ui-sref="welcome">RMA</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-center">
 					<li><a ui-sref="students">Students</a></li>
 					<li><a ui-sref="login">Login</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a ui-sref="login">Logout</a></li>
 				</ul>
 				<form class="navbar-form navbar-right">
 					<input type="text" class="form-control" placeholder="Search...">
@@ -45,8 +48,8 @@
 		
 	</div>
 	<script type="text/javascript" src="js/angular.min.js"></script>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/rma.js"></script>
 </body>
 </html>
