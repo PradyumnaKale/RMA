@@ -7,8 +7,9 @@
 						<tr>
 							<th class="text-right">RollNo</th>
 							<th>FirstName</th>
-							<th>MiddleName</th>
 							<th>LastName</th>
+							<th>FathersName</th>
+							<th>MothersName</th>
 							<th>BirthDate</th>
 							<th>YearOfAdmission</th>
 							<th>&nbsp;</th>
@@ -16,8 +17,9 @@
 						<tr ng-repeat="student in studentList.students">
 							<td class="text-right"><span>{{student.rollNo}}</span></td>
 							<td><span>{{student.firstName}}</span></td>
-							<td><span>{{student.middleName}}</span></td>
 							<td><span>{{student.lastName}}</span></td>
+							<td><span>{{student.fathersName}}</span></td>
+							<td><span>{{student.mothersName}}</span></td>
 							<td><span>{{student.birthdate}}</span></td>
 							<td><span>{{student.yearOfAdmission}}</span></td>
 							<td class="text-right">
@@ -34,17 +36,19 @@
 							<tr>
 								<th class="text-right">RollNo</th>
 								<th>FirstName</th>
-								<th>MiddleName</th>
 								<th>LastName</th>
+								<th>FathersName</th>
+								<th>MothersName</th>
 								<th>BirthDate</th>
 								<th>YearOfAdmission</th>
 								<th>&nbsp;</th>
 							</tr>
 							<tr>
-								<td><input type="number" ng-model="studentList.rollNo" size="10" placeholder="Enter roll no"></td>
-								<td><input type="text" ng-model="studentList.firstName" size="20" placeholder="Enter first name"></td>
-								<td><input type="text" ng-model="studentList.middleName" size="20" placeholder="Enter first name"></td>
-								<td><input type="text" ng-model="studentList.lastName" size="20" placeholder="Enter last name"></td>
+								<td><input type="number" ng-model="studentList.rollNo" size="6" placeholder="Enter roll no"></td>
+								<td><input type="text" ng-model="studentList.firstName" size="10" placeholder="Enter first name"></td>
+								<td><input type="text" ng-model="studentList.lastName" size="10" placeholder="Enter last name"></td>
+								<td><input type="text" ng-model="studentList.fathersName" size="10" placeholder="Enter fathers name"></td>
+								<td><input type="text" ng-model="studentList.mothersName" size="10" placeholder="Enter mothers name"></td>
 								<td><input type="date" ng-model="studentList.birthdate" size="12"></td>
 								<td><input type="number" ng-model="studentList.yearOfAdmission" size="6"></td>
 								<td><button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-plus"></i></button></td>

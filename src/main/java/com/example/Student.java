@@ -14,8 +14,9 @@ public class Student {
 
 	private int rollNo;
 	private String firstName;
-	private String middleName;
 	private String lastName;
+	private String fathersName;
+	private String mothersName;
 	private String birthdate;
 	private int yearOfAdmission;
 
@@ -35,20 +36,28 @@ public class Student {
 		this.firstName = firstName;
 	}
 
-	public String getMiddleName() {
-		return middleName;
-	}
-
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
-
 	public String getLastName() {
 		return lastName;
 	}
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getFathersName() {
+		return fathersName;
+	}
+
+	public void setFathersName(String fathersName) {
+		this.fathersName = fathersName;
+	}
+
+	public String getMothersName() {
+		return mothersName;
+	}
+
+	public void setMothersName(String mothersName) {
+		this.mothersName = mothersName;
 	}
 
 	public String getBirthdate() {

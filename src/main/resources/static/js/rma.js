@@ -37,16 +37,18 @@ angular.module('rmaApp', ['ui.router'])
 		var student = {
 			rollNo : studentlist.rollNo,
 			firstName : studentlist.firstName,
-			middleName : studentlist.middleName,
 			lastName : studentlist.lastName,
+			fathersName : studentlist.fathersName,
+			mothersName : studentlist.mothersName,
 			birthdate : studentlist.birthdate.getDate() + '-' + (studentlist.birthdate.getMonth() + 1) + '-' + studentlist.birthdate.getFullYear(),
 			yearOfAdmission : studentlist.yearOfAdmission,
 		};
 		$http.post('/student', student).success(function (student) {
 			studentlist.rollNo = '';
 			studentlist.firstName = '';
-			studentlist.middleName = '';
 			studentlist.lastName = '';
+			studentlist.fathersName = '';
+			studentlist.mothersName = '';
 			studentlist.birthdate = birthDateDefault;
 			studentlist.yearOfAdmission = now.getFullYear();
 			getStudents();
@@ -71,7 +73,7 @@ angular.module('rmaApp', ['ui.router'])
 	function getStudents() {
 		$http.get('/student')
 			.success(function (students) {
-				studentlist.students = students._embedded.student;
+				studentlist.students = students._embedded.students;
 			})
 			.error(function (error) {
 				$log.error(error || 'Could not get students');
