@@ -2,7 +2,6 @@
 --  TABLE students
 ------------------------------------------------------------------
 
-DROP TABLE IF EXISTS students;
 CREATE TABLE students
 (
    rollno            int(10),

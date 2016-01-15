@@ -1,23 +1,30 @@
 package com.example;
 
+import java.sql.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "students")
 public class Student {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-
+	@Column(name = "rollno")
 	private int rollNo;
+	@Column(name = "firstname")
 	private String firstName;
+	@Column(name = "lastname")
 	private String lastName;
+	@Column(name = "fathersname")
 	private String fathersName;
+	@Column(name = "mothersname")
 	private String mothersName;
-	private String birthdate;
+	@Column(name = "dateofbirth")
+	private Date birthdate;
+	@Column(name = "yearofadmission")
 	private int yearOfAdmission;
 
 	public int getRollNo() {
@@ -60,11 +67,11 @@ public class Student {
 		this.mothersName = mothersName;
 	}
 
-	public String getBirthdate() {
+	public Date getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(String birthdate) {
+	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
 
