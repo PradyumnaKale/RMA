@@ -9,5 +9,7 @@ public class RepositoryConfig extends RepositoryRestMvcConfiguration {
 	@Override
 	protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
 		config.exposeIdsFor(Student.class);
+		config.exposeIdsFor(Subject.class);
+		config.exposeIdsFor(Exam.class);
 	}
 }

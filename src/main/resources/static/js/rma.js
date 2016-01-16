@@ -20,12 +20,25 @@ angular.module('rmaApp', ['ui.router'])
             url: '/students',
             templateUrl: 'partials/students.html'
         })
+        // SUBJECT STATE ========================================
+        .state('subjects', {
+        	url: '/subjects',
+        	templateUrl: 'partials/subjects.html'
+        })
+        // Exam STATE ========================================
+        .state('exams', {
+        	url: '/exams',
+        	templateUrl: 'partials/exams.html'
+        })
         // STUDENTREPORT STATE ========================================
         .state('studentReport', {
             url: '/studentReport',
             templateUrl: 'partials/studentReport.html'
         })
 })
+
+//Students Controller
+
 .controller('StudentListController', function($http, $log) {
 	var now = new Date();
 	var birthDateDefault = new Date(now.getYear() - 18,0,1);
@@ -82,4 +95,102 @@ angular.module('rmaApp', ['ui.router'])
 	
 	
 	getStudents();
+})
+
+//Subjects Controller
+
+.controller('SubjectListController', function($http, $log) {
+	var subjectlist = this;
+	subjectlist.subjects = [];
+	subjectlist.addSubject= function() {
+		var subject = {
+			subjectId : subjectlist.subjectId,
+			subjectType : subjectlist.subjectType,
+			semester : subjectlist.semester,
+			year : subjectlist.year,
+			subjectName : subjectlist.subjectName,
+			description : subjectlist.description,
+		};
+		$http.post('/subject', subject).success(function (subject) {
+			subjectlist.subjectId = '';
+			subjectlist.subjectType = '';
+			subjectlist.semester = '';
+			subjectlist.year = '';
+			subjectlist.subjectName = '';
+			subjectlist.description = '';
+			getSubjects();
+		})
+		.error(function (error) {
+			$log.error(error || 'Could not add subject');
+		});
+
+	};
+/*
+	subjectlist.deleteSubject = function(i) {
+		$http['delete'](subjectlist.subjects[i]._links.self.href)
+		.success(function (subjects) {
+			getSubjects();
+		})
+		.error(function (error) {
+			$log.error(error || 'Could not delete subject ' + i);
+		})
+		subjectlist.subjects.splice(i, 1);
+	};
+*/
+	function getSubjects() {
+		$http.get('/subject?size=100')
+			.success(function (subjects) {
+				subjectlist.subjects = subjects._embedded.subject;
+			})
+			.error(function (error) {
+				$log.error(error || 'Could not get subject');
+			});
+	}
+	getSubjects();
+})
+
+//Exams Controller
+
+.controller('ExamListController', function($http, $log) {
+	var examlist = this;
+	examlist.exams = [];
+	examlist.addExam= function() {
+		var exam = {
+			examYear : examlist.examYear,
+			semester : examlist.semester,
+			examName : examlist.examName,
+		};
+		$http.post('/exam', exam).success(function (exam) {
+			examlist.examYear = '';
+			examlist.semester = '';
+			examlist.examName = '';
+			getExams();
+		})
+		.error(function (error) {
+			$log.error(error || 'Could not add exam');
+		});
+
+	};
+/*
+	examlist.deleteExam = function(i) {
+		$http['delete'](examlist.exams[i]._links.self.href)
+		.success(function (exams) {
+			getExams();
+		})
+		.error(function (error) {
+			$log.error(error || 'Could not delete exam ' + i);
+		})
+		examlist.exams.splice(i, 1);
+	};
+*/
+	function getExams() {
+		$http.get('/exam?size=100')
+			.success(function (exams) {
+				examlist.exams = exams._embedded.exam;
+			})
+			.error(function (error) {
+				$log.error(error || 'Could not get exam');
+			});
+	}
+	getExams();
 });
