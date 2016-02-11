@@ -15,6 +15,7 @@ angular.module('rmaApp', ['ui.router'])
             url: '/login',
             templateUrl: 'partials/login.html'
         })
+
     	// STUDENT STATE ========================================
         .state('students', {
             url: '/students',
@@ -25,15 +26,36 @@ angular.module('rmaApp', ['ui.router'])
         	url: '/subjects',
         	templateUrl: 'partials/subjects.html'
         })
-        // Exam STATE ========================================
+        // EXAM STATE ========================================
         .state('exams', {
         	url: '/exams',
         	templateUrl: 'partials/exams.html'
         })
+        
         // STUDENTREPORT STATE ========================================
         .state('studentReport', {
             url: '/studentReport',
             templateUrl: 'partials/studentReport.html'
+        })
+        // STUDENTREPORT SEMESTER I STATE ========================================
+        .state('studentReport.semesterI', {
+        	url: '/semesterI',
+        	templateUrl: 'partials/semesterI.html'
+        })
+        // STUDENTREPORT SEMESTER II STATE ========================================
+        .state('studentReport.semesterII', {
+        	url: '/semesterII',
+        	templateUrl: 'partials/semesterII.html'
+        })
+        // STUDENTREPORT SEMESTER III STATE ========================================
+        .state('studentReport.semesterIII', {
+        	url: '/semesterIII',
+        	templateUrl: 'partials/semesterIII.html'
+        })
+        // STUDENTREPORT SEMESTER IV STATE ========================================
+        .state('studentReport.semesterIV', {
+        	url: '/semesterIV',
+        	templateUrl: 'partials/semesterIV.html'
         })
 })
 

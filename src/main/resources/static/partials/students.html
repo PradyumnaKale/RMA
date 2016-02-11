@@ -2,34 +2,6 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div ng-controller="StudentListController as studentList">
-					<h2>StudentsDetails</h2>
-					<table class="table">
-						<tr>
-							<th class="text-right">RollNo</th>
-							<th>FirstName</th>
-							<th>LastName</th>
-							<th>FathersName</th>
-							<th>MothersName</th>
-							<th>BirthDate</th>
-							<th>YearOfAdmission</th>
-							<th>&nbsp;</th>
-						</tr>
-						<tr ng-repeat="student in studentList.students">
-							<td class="text-right"><span>{{student.rollNo}}</span></td>
-							<td><span>{{student.firstName}}</span></td>
-							<td><span>{{student.lastName}}</span></td>
-							<td><span>{{student.fathersName}}</span></td>
-							<td><span>{{student.mothersName}}</span></td>
-							<td><span>{{student.birthdate}}</span></td>
-							<td><span>{{student.yearOfAdmission}}</span></td>
-							<td class="text-right">
-								<button class="btn btn-danger" type="button" ng-click="studentList.deleteStudent($index)"><i class="glyphicon glyphicon-remove"></i></button>
-								<a class="btn btn-info" type="button" ui-sref="studentReport"  ><i class="glyphicon glyphicon-list-alt"></i> Report Cards</a>
-
-							</td>
-
-						</tr>
-					</table>
 					<h2>Add Student</h2>
 					<form ng-submit="studentList.addStudent()">
 						<table class="table">
@@ -55,6 +27,32 @@
 							</tr>
 						</table>
 					</form>
+					<h2>StudentsDetails</h2>
+					<table class="table">
+						<tr>
+							<th class="text-right">RollNo</th>
+							<th>FirstName</th>
+							<th>LastName</th>
+							<th>FathersName</th>
+							<th>MothersName</th>
+							<th>BirthDate</th>
+							<th>YearOfAdmission</th>
+							<th>&nbsp;</th>
+						</tr>
+						<tr ng-repeat="student in studentList.students">
+							<td class="text-right"><span>{{student.rollNo}}</span></td>
+							<td><span>{{student.firstName}}</span></td>
+							<td><span>{{student.lastName}}</span></td>
+							<td><span>{{student.fathersName}}</span></td>
+							<td><span>{{student.mothersName}}</span></td>
+							<td><span>{{student.birthdate}}</span></td>
+							<td><span>{{student.yearOfAdmission}}</span></td>
+							<td class="text-right">
+								<button class="btn btn-danger" type="button" ng-click="studentList.deleteStudent($index)"><i class="glyphicon glyphicon-remove"></i></button>
+								<a class="btn btn-info" type="button" ui-sref="studentReport"><i class="glyphicon glyphicon-list-alt"></i> Report Cards</a>
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>

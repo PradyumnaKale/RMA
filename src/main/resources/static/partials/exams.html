@@ -2,24 +2,6 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div ng-controller="ExamListController as examList">
-					<h2>ExamDetails</h2>
-					<table class="table">
-						<tr>
-							<th>ExamYear</th>
-							<th>Semester</th>
-							<th>ExamName</th>
-							<th>&nbsp;</th>
-						</tr>
-						<tr ng-repeat="exam in examList.exams">
-							<td><span>{{exam.examYear}}</span></td>
-							<td><span>{{exam.semester}}</span></td>
-							<td><span>{{exam.examName}}</span></td>
-							<td class="text-right">
-								<button class="btn btn-danger" type="button" ng-click="examList.deleteExam($index)"><i class="glyphicon glyphicon-remove"></i></button>
-								<button class="btn btn-info" type="button" ng-click="($index)"><i class="glyphicon glyphicon-pencil"></i></button>
-							</td>
-						</tr>
-					</table>
 					<h2>Add Exam</h2>
 					<form ng-submit="examList.addExam()">
 						<table class="table">
@@ -36,7 +18,25 @@
 								<td><button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-plus"></i></button></td>
 							</tr>
 						</table>
-					</form>
+					</form>					
+					<h2>ExamDetails</h2>
+					<table class="table">
+						<tr>
+							<th>ExamYear</th>
+							<th>Semester</th>
+							<th>ExamName</th>
+							<th>&nbsp;</th>
+						</tr>
+						<tr ng-repeat="exam in examList.exams">
+							<td><span>{{exam.examYear}}</span></td>
+							<td><span>{{exam.semester}}</span></td>
+							<td><span>{{exam.examName}}</span></td>
+							<td class="text-right">
+								<button class="btn btn-danger" type="button" ng-click="examList.deleteExam($index)"><i class="glyphicon glyphicon-remove"></i></button>
+								<!--button class="btn btn-info" type="button" ng-click="($index)"><i class="glyphicon glyphicon-pencil"></i></button-->
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>
