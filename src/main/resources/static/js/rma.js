@@ -10,6 +10,7 @@ angular.module('rmaApp', ['ui.router'])
     		url: '/welcome',
         	templateUrl: 'partials/welcome.html'
     	})
+    	
         // LOGIN STATE ========================================
         .state('login', {
             url: '/login',
@@ -21,17 +22,46 @@ angular.module('rmaApp', ['ui.router'])
             url: '/students',
             templateUrl: 'partials/students.html'
         })
+        
         // SUBJECT STATE ========================================
         .state('subjects', {
         	url: '/subjects',
         	templateUrl: 'partials/subjects.html'
         })
+        
         // EXAM STATE ========================================
         .state('exams', {
         	url: '/exams',
         	templateUrl: 'partials/exams.html'
         })
+        //======================================================================
+        // studentMarks STATE ========================================
+        .state('studentMarks', {
+        	url: '/studentMarks',
+        	templateUrl: 'partials/studentMarks.html'
+        })
+        // STUDENTMARKS SEMESTER I STATE ========================================
+        .state('studentMarks.semesterIMarks', {
+        	url: '/semesterIMarks',
+        	templateUrl: 'partials/semesterIMarks.html'
+        })
+        // STUDENTMARKS SEMESTER II STATE ========================================
+        .state('studentMarks.semesterIIMarks', {
+        	url: '/semesterIIMarks',
+        	templateUrl: 'partials/semesterIIMarks.html'
+        })
+        // STUDENTMARKS SEMESTER III STATE =======================================
+        .state('studentMarks.semesterIIIMarks', {
+        	url: '/semesterIIIMarks',
+        	templateUrl: 'partials/semesterIIIMarks.html'
+        })
+        // STUDENTMARKS SEMESTER IV STATE ========================================
+        .state('studentMarks.semesterIVMarks', {
+        	url: '/semesterIVMarks',
+        	templateUrl: 'partials/semesterIVMarks.html'
+        })
         
+        //========================================================================
         // STUDENTREPORT STATE ========================================
         .state('studentReport', {
             url: '/studentReport',
