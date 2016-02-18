@@ -108,7 +108,7 @@ angular.module('rmaApp', ['ui.router'])
 			birthdate : studentlist.birthdate.getFullYear() + '-' + (studentlist.birthdate.getMonth() + 1) + '-' + studentlist.birthdate.getDate(),
 			yearOfAdmission : studentlist.yearOfAdmission,
 		};
-		$http.post('/student', student).success(function (student) {
+		$http.post('/student', student).success(function (studentData) {
 			studentlist.rollNo = '';
 			studentlist.firstName = '';
 			studentlist.lastName = '';
@@ -116,6 +116,13 @@ angular.module('rmaApp', ['ui.router'])
 			studentlist.mothersName = '';
 			studentlist.birthdate = birthDateDefault;
 			studentlist.yearOfAdmission = now.getFullYear();
+			var users = {
+					userId : student.rollNo,
+					pass : student.firstName,
+			};
+			$http.post('/users', users).success(function (usersData) {
+
+			})
 			getStudents();
 		})
 		.error(function (error) {
@@ -223,7 +230,7 @@ angular.module('rmaApp', ['ui.router'])
 		});
 
 	};
-/*
+
 	examlist.deleteExam = function(i) {
 		$http['delete'](examlist.exams[i]._links.self.href)
 		.success(function (exams) {
@@ -234,7 +241,7 @@ angular.module('rmaApp', ['ui.router'])
 		})
 		examlist.exams.splice(i, 1);
 	};
-*/
+
 	function getExams() {
 		$http.get('/exam?size=100')
 			.success(function (exams) {

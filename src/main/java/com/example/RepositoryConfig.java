@@ -11,5 +11,7 @@ public class RepositoryConfig extends RepositoryRestMvcConfiguration {
 		config.exposeIdsFor(Student.class);
 		config.exposeIdsFor(Subject.class);
 		config.exposeIdsFor(Exam.class);
+		config.exposeIdsFor(Users.class);
+		config.exposeIdsFor(User_role.class);
 	}
 }
