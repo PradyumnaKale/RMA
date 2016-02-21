@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Entity
 
 @Table(name = "user_roles")
-public class User_role {
+public class User_roles {
 
 	@Id
 	@Column(name = "username")
