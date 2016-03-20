@@ -1,33 +1,33 @@
 <div class="container">
-	<h2>ExamDetails</h2>
-	<table class="table">
-		<tr>
-			<th colspan="3">Semester IV</th>
-			<th colspan="4">2015</th>
-		</tr>
-		<tr>
-			<th>SubjectID</th>
-			<th>Subject</th>
-			<th>Internal</th>
-			<th>External</th>
-			<th>Total</th>
-			<th>Grade</th>
-			<th>Gpa</th>
-		</tr>
-		<tr>
-			<td>S4CP1</td>
-			<td>Computer Programming 1</td>
-			<td>20</td>
-			<td>60</td>
-			<td>80</td>
-			<td>O</td>
-			<td>7.0</td>
-		</tr>
-		<tr>
-			<td>Grade</td>
-			<td colspan="2"><span>O</span></td>
-			<td colspan="2"><span>SGPA</span></td>
-			<td colspan="2"><span>7.0</span></td>
-		</tr>
-	</table>
+	<div ng-controller="SemesterIVController as semesterIVMarksList">
+		<h2>ExamDetails</h2>
+		<table class="table">
+			<tr>
+				<td>StudentID</td>
+				<td>{{subjectmarks.student_id}}</td>
+			</tr>
+			<tr>
+				<th>Semester</th>
+				<th colspan="2">{{subjectmarks.semester}}</th>
+				<th>ExamYear</th>
+				<th colspan="2">{{subjectmarks.exam_year}}</th>
+			</tr>
+			<tr>
+				<th>SubjectID</th>
+				<th>Subject</th>
+				<th>Internal</th>
+				<th>External</th>
+				<th>Total</th>
+				<th>Grade</th>
+			</tr>
+			<tr ng-repeat="subjectmark in semesterIVMarksList.subjectmarks">
+				<td>{{subjectmarks.sub_id}}</td>
+				<td>{{subjectmarks.sub_name}}</td>
+				<td>{{subjectmarks.internal}}</td>
+				<td>{{subjectmarks.external}}</td>
+				<td>{{subjectmarks.total}}</td>
+				<td>{{subjectmarks.sub_grade}}</td>
+			</tr>
+		</table>
+	</div>
 </div>

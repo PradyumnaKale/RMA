@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container" ng-controller="LoginCtrl as loginCtrl">
 
-      <form class="form-signin" action="/welcome.html" method="$HTTPPost">
+      <form class="form-signin">
         <h2 class="form-signin-heading">Login</h2>
         <label for="userId" class="sr-only">User Id</label>
-        <input type="text" name="userId" id="userId" class="form-control" placeholder="Enter User Id" required="baccs" autofocus="">
+        <input type="text" name="userId" id="userId" ng-model="loginCtrl.userId" class="form-control" placeholder="Enter User Id" required="baccs" autofocus="">
         <label for="inputPassword" name="pass" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="mcc">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <input type="password" id="inputPassword" ng-model="loginCtrl.password" class="form-control" placeholder="Password" required="mcc">
+        <button type="button" class="btn btn-lg btn-primary btn-block" ng-click="loginCtrl.login()">Login</button>
       </form>
 
 </div>

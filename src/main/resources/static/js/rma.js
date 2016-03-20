@@ -27,6 +27,7 @@ angular.module('rmaApp', ['ui.router'])
         .state('subjects', {
         	url: '/subjects',
         	templateUrl: 'partials/subjects.html'
+        	
         })
         
         // EXAM STATE ========================================
@@ -88,7 +89,11 @@ angular.module('rmaApp', ['ui.router'])
         	templateUrl: 'partials/semesterIV.html'
         })
 })
-
+.run(function($rootScope, AuthService){
+	$rootScope.logout = function(){
+		AuthService.logout();
+	}
+})
 //Students Controller
 
 .controller('StudentListController', function($http, $log) {
@@ -258,4 +263,189 @@ angular.module('rmaApp', ['ui.router'])
 			});
 	}
 	getExams();
+})
+
+//Student Subject Marks Controller
+.controller('SemesterIController', function($http, $log) {
+	var semesterIMarksList = this;
+	semesterIMarksList.subjectmarks = [];
+	semesterIMarksList.addSubjectMarks = function(){
+		var subjectmark = {
+			student_id	: semesterIMarksList.student_id;
+			semester	: semesterIMarksList.semester;
+			exam_year	: semesterIMarksList.exam_year;
+			sub_id		: semesterIMarksList.sub_id;
+			sub_name	: semesterIMarksList.sub_name;
+			internal	: semesterIMarksList.internal;
+			external	: semesterIMarksList.external;
+			total		: semesterIMarksList.total;
+			sub_grade	: semesterIMarksList.sub_grade;
+		};
+		$http.post('/subjectmarks', subjectmarks).success(function (subjectmarks) {
+			semesterIMarksList.student_id	= '';
+			semesterIMarksList.semester		= '';
+			semesterIMarksList.exam_year	= '';
+			semesterIMarksList.sub_id		= '';
+			semesterIMarksList.sub_name		= '';
+			semesterIMarksList.internal		= '';
+			semesterIMarksList.external		= '';
+			semesterIMarksList.total		= '';
+			semesterIMarksList.sub_grade	= '';
+			getSubjectMarks();
+		})
+		.error(function (error) {
+			$log.error(error || 'Could not add subjectmarks');
+		});
+	};
+	function getSubjectMarks() {
+		$http.get('/subjectmarks?size=100')
+			.success(function (subjectmarks) {
+				semesterIMarksList.subjectmarks = subjectmarks._embedded.subjectmark;
+			})
+			.error(function (error) {
+				$log.error(error || 'Could not get subjectmarks');
+			});
+	}
+	getSubjectMarks();
+})
+
+.controller('SemesterIIController', function($http, $log) {
+	var semesterIIMarksList = this;
+	semesterIIMarksList.subjectmarks = [];
+	semesterIIMarksList.addSubjectMarks = function(){
+		var subjectmark = {
+			student_id	: semesterIIMarksList.student_id;
+			semester	: semesterIIMarksList.semester;
+			exam_year	: semesterIIMarksList.exam_year;
+			sub_id		: semesterIIMarksList.sub_id;
+			sub_name	: semesterIIMarksList.sub_name;
+			internal	: semesterIIMarksList.internal;
+			external	: semesterIIMarksList.external;
+			total		: semesterIIMarksList.total;
+			sub_grade	: semesterIIMarksList.sub_grade;
+		};
+		$http.post('/subjectmarks', subjectmarks).success(function (subjectmarks) {
+			semesterIIMarksList.student_id	= '';
+			semesterIIMarksList.semester	= '';
+			semesterIIMarksList.exam_year	= '';
+			semesterIIMarksList.sub_id		= '';
+			semesterIIMarksList.sub_name	= '';
+			semesterIIMarksList.internal	= '';
+			semesterIIMarksList.external	= '';
+			semesterIIMarksList.total		= '';
+			semesterIIMarksList.sub_grade	= '';
+			getSubjectMarks();
+		})
+		.error(function (error) {
+			$log.error(error || 'Could not add subjectmarks');
+		});
+	};
+	function getSubjectMarks() {
+		$http.get('/subjectmarks?size=100')
+			.success(function (subjectmarks) {
+				semesterIIMarksList.subjectmarks = subjectmarks._embedded.subjectmark;
+			})
+			.error(function (error) {
+				$log.error(error || 'Could not get subjectmarks');
+			});
+	}
+	getSubjectMarks();
+})
+
+.controller('SemesterIIIController', function($http, $log) {
+	var semesterIIIMarksList = this;
+	semesterIIIMarksList.subjectmarks = [];
+	semesterIIIMarksList.addSubjectMarks = function(){
+		var subjectmark = {
+			student_id	: semesterIIIMarksList.student_id;
+			semester	: semesterIIIMarksList.semester;
+			exam_year	: semesterIIIMarksList.exam_year;
+			sub_id		: semesterIIIMarksList.sub_id;
+			sub_name	: semesterIIIMarksList.sub_name;
+			internal	: semesterIIIMarksList.internal;
+			external	: semesterIIIMarksList.external;
+			total		: semesterIIIMarksList.total;
+			sub_grade	: semesterIIIMarksList.sub_grade;
+		};
+		$http.post('/subjectmarks', subjectmarks).success(function (subjectmarks) {
+			semesterIIIMarksList.student_id	= '';
+			semesterIIIMarksList.semester	= '';
+			semesterIIIMarksList.exam_year	= '';
+			semesterIIIMarksList.sub_id		= '';
+			semesterIIIMarksList.sub_name	= '';
+			semesterIIIMarksList.internal	= '';
+			semesterIIIMarksList.external	= '';
+			semesterIIIMarksList.total		= '';
+			semesterIIIMarksList.sub_grade	= '';
+			getSubjectMarks();
+		})
+		.error(function (error) {
+			$log.error(error || 'Could not add subjectmarks');
+		});
+	};
+	function getSubjectMarks() {
+		$http.get('/subjectmarks?size=100')
+			.success(function (subjectmarks) {
+				semesterIIIMarksList.subjectmarks = subjectmarks._embedded.subjectmark;
+			})
+			.error(function (error) {
+				$log.error(error || 'Could not get subjectmarks');
+			});
+	}
+	getSubjectMarks();
+})
+
+.controller('SemesterIVController', function($http, $log) {
+	var semesterIVMarksList = this;
+	semesterIVMarksList.subjectmarks = [];
+	semesterIVMarksList.addSubjectMarks = function(){
+		var subjectmark = {
+			student_id	: semesterIVMarksList.student_id;
+			semester	: semesterIVMarksList.semester;
+			exam_year	: semesterIVMarksList.exam_year;
+			sub_id		: semesterIVMarksList.sub_id;
+			sub_name	: semesterIVMarksList.sub_name;
+			internal	: semesterIVMarksList.internal;
+			external	: semesterIVMarksList.external;
+			total		: semesterIVMarksList.total;
+			sub_grade	: semesterIVMarksList.sub_grade;
+		};
+		$http.post('/subjectmarks', subjectmarks).success(function (subjectmarks) {
+			semesterIVMarksList.student_id	= '';
+			semesterIVMarksList.semester	= '';
+			semesterIVMarksList.exam_year	= '';
+			semesterIVMarksList.sub_id		= '';
+			semesterIVMarksList.sub_name	= '';
+			semesterIVMarksList.internal	= '';
+			semesterIVMarksList.external	= '';
+			semesterIVMarksList.total		= '';
+			semesterIVMarksList.sub_grade	= '';
+			getSubjectMarks();
+		})
+		.error(function (error) {
+			$log.error(error || 'Could not add subjectmarks');
+		});
+	};
+	function getSubjectMarks() {
+		$http.get('/subjectmarks?size=100')
+			.success(function (subjectmarks) {
+				semesterIVMarksList.subjectmarks = subjectmarks._embedded.subjectmark;
+			})
+			.error(function (error) {
+				$log.error(error || 'Could not get subjectmarks');
+			});
+	}
+	getSubjectMarks();
+})
+
+//Login Controller
+.controller('LoginCtrl', function($scope, $http, $log, AuthService) {
+	var loginCtrl = this;
+	loginCtrl.userId = "";
+	loginCtrl.password = "";
+	loginCtrl.login = function(){
+		$log.info(loginCtrl.userId);
+		$log.info(loginCtrl.password);
+		AuthService.authenticate(loginCtrl.userId, loginCtrl.password);
+	}
 });

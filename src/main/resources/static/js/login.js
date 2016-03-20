@@ -1,20 +1,29 @@
-angular.module('app').factory("AuthService", function ($q, localStorageService, $http, $rootScope) {
+angular.module('rmaApp').factory("AuthService", function ($q, $http, $rootScope, $state) {
     var service = {};
     service.authenticate = function (userName, password) {
-        $http.post('/authenticate', {
-            user: userName,
-            password: password
-        }).then(function (data) {
-            localStorageService.add('authToken', data.token);
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + data.token;
+    	var headers = {
+    			Authorization: 'Basic ' + btoa(userName + ':' + password),
+    			'X-Requested-With' : 'XMLHttpRequest'
+    	};
+        $http.post('/authenticate', {}, {headers: headers}).then(function (response) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + btoa(userName + ':' + password);
             $rootScope.$broadcast('userAuthenticated');
+            $rootScope.isLoggedIn = true;
+            $rootScope.userId = response.data.name;
+            $rootScope.authorities = response.data.authorities;
+            if(response.data.authorities = 'ROLE_TEACHER')
+            	$state.go('welcome');
+            else if(response.data.authorities = 'ROLE_STUDENT')
+            	$state.go('studentReport');
         });
     }
-    service.useTokenFromCache=function() {
-        var token=localStorageService.get('authToken');
-        if(token) 
-        $http.defaults.headers.common['Authorization'] 
-          = 'Basic ' + data.token;
-    }    
-return service;
+    service.logout = function (){
+        delete $http.defaults.headers.common['Authorization'];
+        $rootScope.$broadcast('userLoggedOut');
+        $rootScope.isLoggedIn = false;
+        delete $rootScope.userId;
+        delete $rootScope.authorities;
+        $state.go('login');
+    }
+    return service;
 });
