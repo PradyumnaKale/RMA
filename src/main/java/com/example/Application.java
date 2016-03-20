@@ -23,7 +23,7 @@ public class Application {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.httpBasic().and()
-					.authorizeRequests().antMatchers("/index.html", "/pratials/**", "/js/**", "/css/**",
+					.authorizeRequests().antMatchers("/", "/index.html", "/partials/**", "/js/**", "/css/**",
 							"/bootstrap-3.3.6-dist/**", "/images/**")
 					.permitAll().anyRequest().fullyAuthenticated().and().csrf().disable();
 		}

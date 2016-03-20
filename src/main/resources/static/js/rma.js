@@ -265,7 +265,7 @@ angular.module('rmaApp', ['ui.router'])
 	getExams();
 })
 
-//Student Subject Marks Controller
+/*Student Subject Marks Controller
 .controller('SemesterIController', function($http, $log) {
 	var semesterIMarksList = this;
 	semesterIMarksList.subjectmarks = [];
@@ -436,7 +436,7 @@ angular.module('rmaApp', ['ui.router'])
 			});
 	}
 	getSubjectMarks();
-})
+})*/
 
 //Login Controller
 .controller('LoginCtrl', function($scope, $http, $log, AuthService) {
