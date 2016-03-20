@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 
-public class MyKeyThree implements Serializable {
+public class MyKeySem2 implements Serializable {
 	/**
 	 *
 	 */

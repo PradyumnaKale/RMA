@@ -386,7 +386,7 @@ angular.module('rmaApp', ['ui.router'])
 				$log.error(error || 'Could not get semiiimarks');
 			});
 	}
-	getSemIIIMmarks();
+	getSemIIIMarks();
 })
 
 .controller('SemesterIVMarksController', function($http, $log) {

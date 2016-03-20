@@ -7,9 +7,9 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
-@IdClass(MyKeyThree.class)
+@IdClass(MyKeySem1.class)
 
-@Table(name = "semImarks")
+@Table(name = "semimarks")
 public class SemIMarks {
 
 	@Id
