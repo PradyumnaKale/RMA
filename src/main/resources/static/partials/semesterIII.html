@@ -1,32 +1,26 @@
 <div class="container">
-	<div ng-controller="SemesterIIIController as semesterIIIMarksList">
-		<h2>ExamDetails</h2>
+	<div ng-controller="SemesterIIIMarksController as semesterIIIMarksList">
+		<h2>SemIIIExamDetails</h2>
 		<table class="table">
 			<tr>
-				<td>StudentID</td>
-				<td>{{subjectmarks.student_id}}</td>
-			</tr>
-			<tr>
+				<th>StudentID</th>
 				<th>Semester</th>
-				<th colspan="2">{{subjectmarks.semester}}</th>
 				<th>ExamYear</th>
-				<th colspan="2">{{subjectmarks.exam_year}}</th>
-			</tr>
-			<tr>
 				<th>SubjectID</th>
-				<th>Subject</th>
 				<th>Internal</th>
 				<th>External</th>
 				<th>Total</th>
 				<th>Grade</th>
 			</tr>
-			<tr ng-repeat="subjectmark in semesterIIIMarksList.subjectmarks">
-				<td>{{subjectmarks.sub_id}}</td>
-				<td>{{subjectmarks.sub_name}}</td>
-				<td>{{subjectmarks.internal}}</td>
-				<td>{{subjectmarks.external}}</td>
-				<td>{{subjectmarks.total}}</td>
-				<td>{{subjectmarks.sub_grade}}</td>
+			<tr ng-repeat="semiiimarks in semesterIIIMarksList.semiiimarks">
+				<td>{{semiiimarks.student_id}}</td>
+				<td>{{semiiimarks.semester}}</td>
+				<td>{{semiiimarks.exam_year}}</td>
+				<td>{{semiiimarks.sub_id}}</td>
+				<td>{{semiiimarks.internal}}</td>
+				<td>{{semiiimarks.external}}</td>
+				<td>{{semiiimarks.total}}</td>
+				<td>{{semiiimarks.sub_grade}}</td>
 			</tr>
 		</table>
 	</div>

@@ -3,23 +3,23 @@ package com.example;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "subjectmarks")
-public class SubjectMarks {
+@IdClass(MyKeyThree.class)
+
+@Table(name = "semIIImarks")
+public class SemIIIMarks {
 
 	@Id
-	@Column(name = "student_id")
 	private int student_id;
+	@Id
+	private String sub_id;
 	@Column(name = "exam_year")
 	private int exam_year;
 	@Column(name = "semester")
 	private int semester;
-	@Column(name = "sub_id")
-	private String sub_id;
-	@Column(name = "sub_name")
-	private String sub_name;
 	@Column(name = "internal")
 	private int internal;
 	@Column(name = "external")
@@ -59,14 +59,6 @@ public class SubjectMarks {
 
 	public void setSub_id(String sub_id) {
 		this.sub_id = sub_id;
-	}
-
-	public String getSub_name() {
-		return sub_name;
-	}
-
-	public void setSub_name(String sub_name) {
-		this.sub_name = sub_name;
 	}
 
 	public int getInternal() {

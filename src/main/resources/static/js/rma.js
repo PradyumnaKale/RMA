@@ -1,7 +1,7 @@
 angular.module('rmaApp', ['ui.router'])
 .config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/welcome');
+    $urlRouterProvider.otherwise('/login');
 
     $stateProvider
 
@@ -265,178 +265,170 @@ angular.module('rmaApp', ['ui.router'])
 	getExams();
 })
 
-/*Student Subject Marks Controller
-.controller('SemesterIController', function($http, $log) {
+//Student Subject Marks Controller
+.controller('SemesterIMarksController', function($http, $log) {
 	var semesterIMarksList = this;
-	semesterIMarksList.subjectmarks = [];
-	semesterIMarksList.addSubjectMarks = function(){
-		var subjectmark = {
-			student_id	: semesterIMarksList.student_id;
-			semester	: semesterIMarksList.semester;
-			exam_year	: semesterIMarksList.exam_year;
-			sub_id		: semesterIMarksList.sub_id;
-			sub_name	: semesterIMarksList.sub_name;
-			internal	: semesterIMarksList.internal;
-			external	: semesterIMarksList.external;
-			total		: semesterIMarksList.total;
-			sub_grade	: semesterIMarksList.sub_grade;
+	semesterIMarksList.semimark = [];
+	semesterIMarksList.addSemIMarks = function(){
+		var semimarks = {
+			student_id	: semesterIMarksList.student_id,
+			semester	: semesterIMarksList.semester,
+			exam_year	: semesterIMarksList.exam_year,
+			sub_id		: semesterIMarksList.sub_id,
+			internal	: semesterIMarksList.internal,
+			external	: semesterIMarksList.external,
+			total		: semesterIMarksList.total,
+			sub_grade	: semesterIMarksList.sub_grade,
 		};
-		$http.post('/subjectmarks', subjectmarks).success(function (subjectmarks) {
-			semesterIMarksList.student_id	= '';
-			semesterIMarksList.semester		= '';
-			semesterIMarksList.exam_year	= '';
+		$http.post('/semimarks', semimarks).success(function (semimarks) {
+			//semesterIMarksList.student_id	= '';
+			//semesterIMarksList.semester		= '';
+			//semesterIMarksList.exam_year	= '';
 			semesterIMarksList.sub_id		= '';
-			semesterIMarksList.sub_name		= '';
 			semesterIMarksList.internal		= '';
 			semesterIMarksList.external		= '';
 			semesterIMarksList.total		= '';
 			semesterIMarksList.sub_grade	= '';
-			getSubjectMarks();
+			getSemIMarks();
 		})
 		.error(function (error) {
-			$log.error(error || 'Could not add subjectmarks');
+			$log.error(error || 'Could not add semimarks');
 		});
 	};
-	function getSubjectMarks() {
-		$http.get('/subjectmarks?size=100')
-			.success(function (subjectmarks) {
-				semesterIMarksList.subjectmarks = subjectmarks._embedded.subjectmark;
+	function getSemIMarks() {
+		$http.get('/semimarks?size=100')
+			.success(function (semimarks) {
+				semesterIMarksList.semimarks = semimarks._embedded.semimarks;
 			})
 			.error(function (error) {
-				$log.error(error || 'Could not get subjectmarks');
+				$log.error(error || 'Could not get semimarks');
 			});
 	}
-	getSubjectMarks();
+	getSemIMarks();
 })
 
-.controller('SemesterIIController', function($http, $log) {
+.controller('SemesterIIMarksController', function($http, $log) {
 	var semesterIIMarksList = this;
-	semesterIIMarksList.subjectmarks = [];
-	semesterIIMarksList.addSubjectMarks = function(){
-		var subjectmark = {
-			student_id	: semesterIIMarksList.student_id;
-			semester	: semesterIIMarksList.semester;
-			exam_year	: semesterIIMarksList.exam_year;
-			sub_id		: semesterIIMarksList.sub_id;
-			sub_name	: semesterIIMarksList.sub_name;
-			internal	: semesterIIMarksList.internal;
-			external	: semesterIIMarksList.external;
-			total		: semesterIIMarksList.total;
-			sub_grade	: semesterIIMarksList.sub_grade;
+	semesterIIMarksList.semiimarks = [];
+	semesterIIMarksList.addSemIIMarks = function(){
+		var semiimarks = {
+			student_id	: semesterIIMarksList.student_id,
+			semester	: semesterIIMarksList.semester,
+			exam_year	: semesterIIMarksList.exam_year,
+			sub_id		: semesterIIMarksList.sub_id,
+			internal	: semesterIIMarksList.internal,
+			external	: semesterIIMarksList.external,
+			total		: semesterIIMarksList.total,
+			sub_grade	: semesterIIMarksList.sub_grade,
 		};
-		$http.post('/subjectmarks', subjectmarks).success(function (subjectmarks) {
-			semesterIIMarksList.student_id	= '';
-			semesterIIMarksList.semester	= '';
-			semesterIIMarksList.exam_year	= '';
+		$http.post('/semiimarks', semiimarks).success(function (semiimarks) {
+			//semesterIIMarksList.student_id	= '';
+			//semesterIIMarksList.semester	= '';
+			//semesterIIMarksList.exam_year	= '';
 			semesterIIMarksList.sub_id		= '';
-			semesterIIMarksList.sub_name	= '';
 			semesterIIMarksList.internal	= '';
 			semesterIIMarksList.external	= '';
 			semesterIIMarksList.total		= '';
 			semesterIIMarksList.sub_grade	= '';
-			getSubjectMarks();
+			getSemIIMarks();
 		})
 		.error(function (error) {
-			$log.error(error || 'Could not add subjectmarks');
+			$log.error(error || 'Could not add semiimarks');
 		});
 	};
-	function getSubjectMarks() {
-		$http.get('/subjectmarks?size=100')
-			.success(function (subjectmarks) {
-				semesterIIMarksList.subjectmarks = subjectmarks._embedded.subjectmark;
+	function getSemIIMarks() {
+		$http.get('/semiimarks?size=100')
+			.success(function (semiimarks) {
+				semesterIIMarksList.semiimarks = semiimarks._embedded.semiimarks;
 			})
 			.error(function (error) {
-				$log.error(error || 'Could not get subjectmarks');
+				$log.error(error || 'Could not get semiimarks');
 			});
 	}
-	getSubjectMarks();
+	getSemIIMarks();
 })
 
-.controller('SemesterIIIController', function($http, $log) {
+.controller('SemesterIIIMarksController', function($http, $log) {
 	var semesterIIIMarksList = this;
-	semesterIIIMarksList.subjectmarks = [];
-	semesterIIIMarksList.addSubjectMarks = function(){
-		var subjectmark = {
-			student_id	: semesterIIIMarksList.student_id;
-			semester	: semesterIIIMarksList.semester;
-			exam_year	: semesterIIIMarksList.exam_year;
-			sub_id		: semesterIIIMarksList.sub_id;
-			sub_name	: semesterIIIMarksList.sub_name;
-			internal	: semesterIIIMarksList.internal;
-			external	: semesterIIIMarksList.external;
-			total		: semesterIIIMarksList.total;
-			sub_grade	: semesterIIIMarksList.sub_grade;
+	semesterIIIMarksList.semiiimarks = [];
+	semesterIIIMarksList.addSemIIIMarks = function(){
+		var semiiimarks = {
+			student_id	: semesterIIIMarksList.student_id,
+			semester	: semesterIIIMarksList.semester,
+			exam_year	: semesterIIIMarksList.exam_year,
+			sub_id		: semesterIIIMarksList.sub_id,
+			internal	: semesterIIIMarksList.internal,
+			external	: semesterIIIMarksList.external,
+			total		: semesterIIIMarksList.total,
+			sub_grade	: semesterIIIMarksList.sub_grade,
 		};
-		$http.post('/subjectmarks', subjectmarks).success(function (subjectmarks) {
-			semesterIIIMarksList.student_id	= '';
-			semesterIIIMarksList.semester	= '';
-			semesterIIIMarksList.exam_year	= '';
+		$http.post('/semiiimarks', semiiimarks).success(function (semiiimarks) {
+			//semesterIIIMarksList.student_id	= '';
+			//semesterIIIMarksList.semester	= '';
+			//semesterIIIMarksList.exam_year	= '';
 			semesterIIIMarksList.sub_id		= '';
-			semesterIIIMarksList.sub_name	= '';
 			semesterIIIMarksList.internal	= '';
 			semesterIIIMarksList.external	= '';
 			semesterIIIMarksList.total		= '';
 			semesterIIIMarksList.sub_grade	= '';
-			getSubjectMarks();
+			getSemIIIMarks();
 		})
 		.error(function (error) {
-			$log.error(error || 'Could not add subjectmarks');
+			$log.error(error || 'Could not add semiiimarks');
 		});
 	};
-	function getSubjectMarks() {
-		$http.get('/subjectmarks?size=100')
-			.success(function (subjectmarks) {
-				semesterIIIMarksList.subjectmarks = subjectmarks._embedded.subjectmark;
+	function getSemIIIMarks() {
+		$http.get('/semiiimarks?size=100')
+			.success(function (semiiimarks) {
+				semesterIIIMarksList.semiiimarks = semiiimarks._embedded.semiiimarks;
 			})
 			.error(function (error) {
-				$log.error(error || 'Could not get subjectmarks');
+				$log.error(error || 'Could not get semiiimarks');
 			});
 	}
-	getSubjectMarks();
+	getSemIIIMmarks();
 })
 
-.controller('SemesterIVController', function($http, $log) {
+.controller('SemesterIVMarksController', function($http, $log) {
 	var semesterIVMarksList = this;
-	semesterIVMarksList.subjectmarks = [];
-	semesterIVMarksList.addSubjectMarks = function(){
-		var subjectmark = {
-			student_id	: semesterIVMarksList.student_id;
-			semester	: semesterIVMarksList.semester;
-			exam_year	: semesterIVMarksList.exam_year;
-			sub_id		: semesterIVMarksList.sub_id;
-			sub_name	: semesterIVMarksList.sub_name;
-			internal	: semesterIVMarksList.internal;
-			external	: semesterIVMarksList.external;
-			total		: semesterIVMarksList.total;
-			sub_grade	: semesterIVMarksList.sub_grade;
+	semesterIVMarksList.semivmarks = [];
+	semesterIVMarksList.addSemIVMarks = function(){
+		var semivmarks = {
+			student_id	: semesterIVMarksList.student_id,
+			semester	: semesterIVMarksList.semester,
+			exam_year	: semesterIVMarksList.exam_year,
+			sub_id		: semesterIVMarksList.sub_id,
+			internal	: semesterIVMarksList.internal,
+			external	: semesterIVMarksList.external,
+			total		: semesterIVMarksList.total,
+			sub_grade	: semesterIVMarksList.sub_grade,
 		};
-		$http.post('/subjectmarks', subjectmarks).success(function (subjectmarks) {
-			semesterIVMarksList.student_id	= '';
-			semesterIVMarksList.semester	= '';
-			semesterIVMarksList.exam_year	= '';
+		$http.post('/semivmarks', semivmarks).success(function (semivmarks) {
+			//semesterIVMarksList.student_id	= '';
+			//semesterIVMarksList.semester	= '';
+			//semesterIVMarksList.exam_year	= '';
 			semesterIVMarksList.sub_id		= '';
-			semesterIVMarksList.sub_name	= '';
 			semesterIVMarksList.internal	= '';
 			semesterIVMarksList.external	= '';
 			semesterIVMarksList.total		= '';
 			semesterIVMarksList.sub_grade	= '';
-			getSubjectMarks();
+			getSemIVMarks();
 		})
 		.error(function (error) {
-			$log.error(error || 'Could not add subjectmarks');
+			$log.error(error || 'Could not add semivmarks');
 		});
 	};
-	function getSubjectMarks() {
-		$http.get('/subjectmarks?size=100')
-			.success(function (subjectmarks) {
-				semesterIVMarksList.subjectmarks = subjectmarks._embedded.subjectmark;
+	function getSemIVMarks() {
+		$http.get('/semivmarks?size=100')
+			.success(function (semivmarks) {
+				semesterIVMarksList.semivmarks = semivmarks._embedded.semivmarks;
 			})
 			.error(function (error) {
-				$log.error(error || 'Could not get subjectmarks');
+				$log.error(error || 'Could not get semivmarks');
 			});
 	}
-	getSubjectMarks();
-})*/
+	getSemIVMarks();
+})
 
 //Login Controller
 .controller('LoginCtrl', function($scope, $http, $log, AuthService) {
