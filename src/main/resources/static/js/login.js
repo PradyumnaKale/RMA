@@ -11,10 +11,12 @@ angular.module('rmaApp').factory("AuthService", function ($q, $http, $rootScope,
             $rootScope.isLoggedIn = true;
             $rootScope.userId = response.data.name;
             $rootScope.authorities = response.data.authorities;
-            if(response.data.authorities = 'ROLE_TEACHER')
-            	$state.go('welcome');
-            else if(response.data.authorities = 'ROLE_STUDENT')
+            if($rootScope.authorities[0].authority === 'ROLE_STUDENT'){
             	$state.go('studentReport');
+            } else {
+            	$state.go('welcome');
+            }
+            
         });
     }
     service.logout = function (){

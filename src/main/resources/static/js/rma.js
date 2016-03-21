@@ -126,11 +126,11 @@ angular.module('rmaApp', ['ui.router'])
 					pass : student.firstName,
 			};
 			$http.post('/users', users).success(function (usersData) {
-				var user_roles = {
+				var authorities = {
 						username : users.userId,
-						//users_role : 'ROLE_STUDENT',
+						authority : 'ROLE_STUDENT',
 				};
-				$http.post('/user_roles', user_roles).success(function (user_rolesData) {
+				$http.post('/authorities', authorities ).success(function (authoritiesData) {
 					
 				})
 			})

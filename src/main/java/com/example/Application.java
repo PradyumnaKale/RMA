@@ -1,5 +1,7 @@
 package com.example;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +22,10 @@ public class Application {
 	@Configuration
 	@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 	protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+		@Autowired
+		private DataSource dataSource;
+
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.httpBasic().and()
@@ -28,10 +34,17 @@ public class Application {
 					.permitAll().anyRequest().fullyAuthenticated().and().csrf().disable();
 		}
 
-		@Autowired
-		public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-			auth.inMemoryAuthentication().withUser("pradyumna").password("password").roles("STUDENT").and()
-					.withUser("teacher").password("teacher").roles("TEACHER");
+		@Override
+		public void configure(AuthenticationManagerBuilder auth) throws Exception {
+			auth.jdbcAuthentication().dataSource(this.dataSource);
 		}
+
+		/*
+		 * @Autowired public void configureGlobal(AuthenticationManagerBuilder
+		 * auth) throws Exception {
+		 * auth.inMemoryAuthentication().withUser("student").password("student")
+		 * .roles("STUDENT").and()
+		 * .withUser("bsccs").password("mcc").roles("TEACHER"); }
+		 */
 	}
 }
