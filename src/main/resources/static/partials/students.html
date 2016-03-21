@@ -49,7 +49,7 @@
 							<td><span>{{student.yearOfAdmission}}</span></td>
 							<td class="text-right">
 								<button class="btn btn-danger" type="button" ng-click="studentList.deleteStudent($index)"><i class="glyphicon glyphicon-remove"></i></button>
-								<a class="btn btn-info" type="button" ui-sref="studentReport"><i class="glyphicon glyphicon-list-alt"></i> Report Cards</a>
+								<a class="btn btn-info" type="button" ui-sref="studentReport({userId : student.rollNo})"><i class="glyphicon glyphicon-list-alt"></i> Report Cards</a>
 							</td>
 						</tr>
 					</table>

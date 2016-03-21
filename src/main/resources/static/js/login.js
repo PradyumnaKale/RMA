@@ -12,7 +12,7 @@ angular.module('rmaApp').factory("AuthService", function ($q, $http, $rootScope,
             $rootScope.userId = response.data.name;
             $rootScope.authorities = response.data.authorities;
             if($rootScope.authorities[0].authority === 'ROLE_STUDENT'){
-            	$state.go('studentReport');
+            	$state.go('studentReport', {userId : $rootScope.userId});
             } else {
             	$state.go('welcome');
             }

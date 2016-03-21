@@ -65,8 +65,9 @@ angular.module('rmaApp', ['ui.router'])
         //========================================================================
         // STUDENTREPORT STATE ========================================
         .state('studentReport', {
-            url: '/studentReport',
-            templateUrl: 'partials/studentReport.html'
+            url: '/studentReport/:userId',
+            templateUrl: 'partials/studentReport.html',
+            controller : 'StudentReportCtrl'
         })
         // STUDENTREPORT SEMESTER I STATE ========================================
         .state('studentReport.semesterI', {
@@ -440,4 +441,10 @@ angular.module('rmaApp', ['ui.router'])
 		$log.info(loginCtrl.password);
 		AuthService.authenticate(loginCtrl.userId, loginCtrl.password);
 	}
+})
+
+//StudentReportCtrl
+.controller('StudentReportCtrl', function($scope, $stateParams, $log){
+	$log.info("userId : " + $stateParams.userId)
+	$scope.userId = $stateParams.userId;
 });
